@@ -1,0 +1,50 @@
+body {
+  position: relative;
+  background: linear-gradient(#1090d0, #2612aa 85%);
+  min-width: 100vw;
+  overflow-x: hidden;
+}
+
+.snowfall-container {
+  inset: 0;
+  min-height: 100%;
+}
+
+/* Container to hold the snowflakes */
+.snowflake {
+  position: absolute;
+  top: -30px;
+  font-size: 1rem;
+  color: white;
+  border-radius: 50%;
+  opacity: 0.8;
+  animation: fall linear infinite, sway 3s ease-in-out infinite;
+
+  z-index: 1;
+  pointer-events: none;
+}
+
+.container {
+  position: relative;
+  z-index: 2;
+}
+
+@keyframes fall {
+  0% {
+    top: -10%;
+  }
+  100% {
+    top: 95%;
+  }
+}
+@keyframes sway {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(-40px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
