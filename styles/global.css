@@ -1,26 +1,90 @@
-/* Global styles */
-/* Example styles */
-body {
-  font-family: Arial, sans-serif;
+/* -------------------------------
+   GLOBAL THEME VARIABLES
+---------------------------------- */
+
+:root {
+  /* Palette */
+  --color-bg-primary: #0d1b2a;      /* deep winter navy */
+  --color-bg-secondary: #1b263b;
+  --color-bg-accent: #415a77;
+  --color-text-light: #e0e5ec;
+  --color-accent: #d8572a;          /* festive warm accent */
+  --color-snow: #f8f9fa;
+  --color-gold: #f6d469;
+
+  /* Fonts */
+  --font-heading: 'Playfair Display', serif;
+  --font-body: 'Inter', sans-serif;
+
+  /* Spacing scale */
+  --space-section: 5rem;
+}
+
+/* ----------------------------------
+   TYPOGRAPHY & BASE RESET
+---------------------------------- */
+
+html, body {
   margin: 0;
   padding: 0;
+  font-family: var(--font-body);
+  color: var(--color-text-light);
+  background-color: var(--color-bg-primary);
 }
 
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px;
+/* Headings */
+h1, h2, h3, h4 {
+  font-family: var(--font-heading);
+  color: var(--color-snow);
+  font-weight: 600;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  color: #333;
+/* smooth scroll + transitions globally */
+* {
+  scroll-behavior: smooth;
+  transition: all .2s ease-in-out;
 }
 
-a {
-  color: #007bff;
-  text-decoration: none;
-}
+/* ----------------------------------
+   CUSTOM UTILITY CLASSES
+---------------------------------- */
 
-a:hover {
-  text-decoration: underline;
+@layer utilities {
+
+  /* glowing white text for winter vibe */
+  .text-snow-glow {
+    text-shadow: 0px 0px 10px rgba(255,255,255,0.5);
+  }
+
+  /* frosted glass card */
+  .frost-card {
+    backdrop-filter: blur(8px);
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 1rem;
+    padding: 1.5rem;
+  }
+
+  /* clean CTA button */
+  .btn-primary {
+    background: var(--color-accent);
+    color: var(--color-snow);
+    font-weight: 500;
+    padding: .6rem 1.4rem;
+    border-radius: .75rem;
+    display: inline-block;
+  }
+  .btn-primary:hover {
+    filter: brightness(1.15);
+  }
+
+  /* subtle gradient background wrapper */
+  .winter-gradient {
+    background: linear-gradient(
+      180deg,
+      var(--color-bg-primary) 0%,
+      var(--color-bg-secondary) 50%,
+      black 100%
+    );
+  }
 }

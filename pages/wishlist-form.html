@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="/styles/snowfall.css" />
+    <title>Christmas Wishlist Form</title>
+  </head>
+  <body class="min-h-screen">
+    <div class="snowfall-container"></div>
+    <div class="container mx-auto px-4 py-12 max-w-2xl">
+      <!-- Introductory Section -->
+      <div class="text-center mb-12">
+        <h1 class="text-4xl font-bold text-white mb-4">
+          Create Your Christmas Wishlist
+        </h1>
+        <p class="text-lg text-gray-200">
+          Share your holiday dreams with us! Fill out this form to add an item
+          to your wishlist. Your wish will be beautifully displayed as an
+          ornament on our website's Christmas tree for everyone to see and
+          celebrate the magic of the season together.
+        </p>
+      </div>
+
+      <!-- Wishlist Form -->
+      <form
+        class="bg-white/10 backdrop-blur-lg rounded-2xl shadow-2xl p-8 border border-white/20"
+      >
+        <div class="space-y-6">
+          <!-- Item Name -->
+          <div>
+            <label
+              for="item-name"
+              class="block text-sm font-medium text-white mb-2"
+            >
+              Item Name <span class="text-red-400">*</span>
+            </label>
+            <input
+              type="text"
+              id="item-name"
+              name="item-name"
+              required
+              placeholder="e.g., PlayStation 5, Cozy Sweater"
+              class="block w-full rounded-lg bg-white/10 border border-white/20 px-4 py-3 text-white placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent transition"
+            />
+          </div>
+
+          <!-- Item Image URL -->
+          <div>
+            <label
+              for="item-image"
+              class="block text-sm font-medium text-white mb-2"
+            >
+              Item Image URL <span class="text-red-400">*</span>
+            </label>
+            <input
+              type="url"
+              id="item-image"
+              name="item-image"
+              required
+              placeholder="https://example.com/image.jpg"
+              class="block w-full rounded-lg bg-white/10 border border-white/20 px-4 py-3 text-white placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent transition"
+            />
+            <p class="mt-2 text-xs text-gray-300">
+              Provide a URL to an image of the item you wish for
+            </p>
+          </div>
+
+          <!-- Optional Description -->
+          <div>
+            <label
+              for="item-description"
+              class="block text-sm font-medium text-white mb-2"
+            >
+              Description <span class="text-gray-400">(Optional)</span>
+            </label>
+            <textarea
+              id="item-description"
+              name="item-description"
+              rows="4"
+              placeholder="Tell us why you'd love this item or any special details..."
+              class="block w-full rounded-lg bg-white/10 border border-white/20 px-4 py-3 text-white placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent transition resize-none"
+            ></textarea>
+          </div>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="mt-8">
+          <button
+            type="submit"
+            class="w-full bg-gradient-to-r from-red-600 to-green-600 hover:from-red-700 hover:to-green-700 text-white font-bold py-4 px-6 rounded-lg shadow-lg transform transition hover:scale-105 focus:outline-none focus:ring-4 focus:ring-red-500/50"
+          >
+            Add to Christmas Tree
+          </button>
+        </div>
+      </form>
+    </div>
+    <script>
+      const snowFlakeCount = 100;
+      const snowContainer = document.querySelector(".snowfall-container");
+      for (let i = 0; i < snowFlakeCount; i++) {
+        //generate snowflakes
+        const snowFlake = document.createElement("div");
+        snowFlake.classList.add("snowflake");
+        snowFlake.style.left = Math.random() * 100 + "vw";
+        snowFlake.style.animationDuration = 5 + Math.random() * 10 + "s";
+        snowFlake.style.opacity = Math.random();
+        snowFlake.style.fontSize = 10 + Math.random() * 20 + "px";
+        snowFlake.style.animationDelay = Math.random() * -10 + "s";
+
+        snowFlake.innerText = "❄";
+        document.body.appendChild(snowFlake);
+      }
+    </script>
+  </body>
+</html>
