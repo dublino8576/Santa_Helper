@@ -12,6 +12,7 @@
   <body
     class="m-8 min-h-screen text-center flex items-center justify-center h-screen flex-col"
   >
+    <div class="snowfall-container"></div>
     <div class="text-center mb-8">
       <h1 class="text-3xl sm:text-5xl md:text-6xl text-white drop-shadow-lg">
         🎅 Santa is coming! Get ready!
@@ -144,7 +145,7 @@
         snowFlake.style.animationDelay = Math.random() * -10 + "s";
 
         snowFlake.innerText = "❄";
-        document.body.appendChild(snowFlake);
+        snowContainer.appendChild(snowFlake);
       }
     </script>
   </body>
