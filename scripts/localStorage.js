@@ -19,7 +19,6 @@ function saveToLocalStorage() {
   } else {
     document.getElementById("name-error").classList.add("hidden");
   }
-  console.log("i am here", wishlist.length);
   if (wishlist.length === 8) {
     alert("You can only save up to 8 wishlist items.");
     return;
@@ -31,5 +30,16 @@ function saveToLocalStorage() {
   };
   wishlist.push(newItem);
   localStorage.setItem("wishlist", JSON.stringify(wishlist));
-  console.log(localStorage.getItem("wishlist"), "localStorage");
+  showSuccessModal();
+}
+
+function showSuccessModal() {
+  const modal = document.getElementById("success-modal");
+  modal.classList.remove("hidden");
+}
+
+function closeSuccessModal() {
+  const modal = document.getElementById("success-modal");
+  modal.classList.add("hidden");
+  document.getElementById("wishlist-form").reset();
 }
