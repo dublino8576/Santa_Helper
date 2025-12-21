@@ -94,6 +94,9 @@
           >
             Add to Christmas Tree
           </button>
+          <p id="inventory-full" class="hidden text-red-400 text-sm mt-1">
+            Maximum of 8 wishlist items reached.
+          </p>
         </div>
       </form>
     </div>
@@ -116,22 +119,6 @@
     </div>
 
     <script src="../scripts/localStorage.js"></script>
-    <script>
-      const snowFlakeCount = 100;
-      const snowContainer = document.querySelector(".snowfall-container");
-      for (let i = 0; i < snowFlakeCount; i++) {
-        //generate snowflakes
-        const snowFlake = document.createElement("div");
-        snowFlake.classList.add("snowflake");
-        snowFlake.style.left = Math.random() * 100 + "vw";
-        snowFlake.style.animationDuration = 5 + Math.random() * 10 + "s";
-        snowFlake.style.opacity = Math.random();
-        snowFlake.style.fontSize = 10 + Math.random() * 20 + "px";
-        snowFlake.style.animationDelay = Math.random() * -10 + "s";
-
-        snowFlake.innerText = "❄";
-        snowContainer.appendChild(snowFlake);
-      }
-    </script>
+    <script src="../scripts/snowfall.js"></script>
   </body>
 </html>

@@ -20,8 +20,10 @@ function saveToLocalStorage() {
     document.getElementById("name-error").classList.add("hidden");
   }
   if (wishlist.length === 8) {
-    alert("You can only save up to 8 wishlist items.");
+    document.getElementById("inventory-full").classList.remove("hidden");
     return;
+  } else {
+    document.getElementById("inventory-full").classList.add("hidden");
   }
   const newItem = {
     name: itemName.value.trim(),
