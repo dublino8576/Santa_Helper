@@ -7,83 +7,146 @@
     <title>Christmas Wishlist Countdown</title>
     <link rel="stylesheet" href="../styles/countdown.css" />
     <link rel="stylesheet" href="../styles/global.css" />
+    <link rel="stylesheet" href="../styles/snowfall.css" />
   </head>
-  <body>
+  <body
+    class="m-8 min-h-screen text-center flex items-center justify-center h-screen flex-col"
+  >
+    <div class="text-center mb-8">
+      <h1
+        class="text-3xl sm:text-5xl md:text-6xl font-extrabold text-white drop-shadow-lg"
+      >
+        🎅 Santa is coming! Get ready!
+      </h1>
+      <p class="text-lg sm:text-xl text-white/80 mt-2">
+        The countdown to Christmas magic begins…
+      </p>
+    </div>
+
     <!-- Count down timer  -->
-    <section class="timer">
-      <div id="countdown-timer">
-        <span id="days"> </span>
-        <span id="colon">:</span>
-        <span id="hours"> </span>
-        <span id="colon">:</span>
-        <span id="minutes"> </span>
-        <span id="colon">:</span>
-        <span id="seconds"> </span>
+    <section class="timer mb-12 flex justify-center">
+      <div id="countdown-timer" class="flex gap-4 sm:gap-6 md:gap-8">
+        <!-- Days -->
+        <span
+          id="days"
+          class="bg-white/10 backdrop-blur-lg rounded-3xl shadow-2xl p-6 sm:p-8 md:p-10 text-3xl sm:text-5xl md:text-6xl font-bold border border-white/20 flex items-center justify-center min-w-[60px] sm:min-w-[90px] md:min-w-[120px]"
+        ></span>
+
+        <span
+          class="text-3xl sm:text-5xl md:text-6xl font-bold flex items-center"
+          >:</span
+        >
+
+        <!-- Hours -->
+        <span
+          id="hours"
+          class="bg-white/10 backdrop-blur-lg rounded-3xl shadow-2xl p-6 sm:p-8 md:p-10 text-3xl sm:text-5xl md:text-6xl font-bold border border-white/20 flex items-center justify-center min-w-[60px] sm:min-w-[90px] md:min-w-[120px]"
+        ></span>
+
+        <span
+          class="text-3xl sm:text-5xl md:text-6xl font-bold flex items-center"
+          >:</span
+        >
+
+        <!-- Minutes -->
+        <span
+          id="minutes"
+          class="bg-white/10 backdrop-blur-lg rounded-3xl shadow-2xl p-6 sm:p-8 md:p-10 text-3xl sm:text-5xl md:text-6xl font-bold border border-white/20 flex items-center justify-center min-w-[60px] sm:min-w-[90px] md:min-w-[120px]"
+        ></span>
+
+        <span
+          class="text-3xl sm:text-5xl md:text-6xl font-bold flex items-center"
+          >:</span
+        >
+
+        <!-- Seconds -->
+        <span
+          id="seconds"
+          class="bg-white/10 backdrop-blur-lg rounded-3xl shadow-2xl p-6 sm:p-8 md:p-10 text-3xl sm:text-5xl md:text-6xl font-bold border border-white/20 flex items-center justify-center min-w-[60px] sm:min-w-[90px] md:min-w-[120px]"
+        ></span>
       </div>
     </section>
 
     <!-- Ai generated message  -->
-    <section class="messages">
-      <div id="christmas-message"></div>
+    <section
+      class="messages bg-white/10 backdrop-blur-lg rounded-2xl shadow-2xl p-8 border border-white/20 m-8"
+    >
+      <div id="christmas-message">Loading</div>
     </section>
-  </body>
 
-  <script>
-    // sets variable to store christmas day
-    var christmasDay = new Date("Dec 25, 2025 00:00:00").getTime();
+    <script>
+      // sets variable to store christmas day
+      var christmasDay = new Date("Dec 25, 2025 00:00:00").getTime();
 
-    //updates every second
-    var x = setInterval(function () {
-      //initialises current date
-      var now = new Date().getTime();
+      //updates every second
+      var x = setInterval(function () {
+        //initialises current date
+        var now = new Date().getTime();
 
-      var distance = christmasDay - now; //distance between today and christmas
+        var distance = christmasDay - now; //distance between today and christmas
 
-      //calculation for days, hours, minuets and seconds
-      var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      var hours = Math.floor(
-        (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-      );
-      var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-      //sets the elements to be equal to the values
-      document.getElementById("days").innerHTML = days;
-      document.getElementById("hours").innerHTML = hours;
-      document.getElementById("minutes").innerHTML = minutes;
-      document.getElementById("seconds").innerHTML = seconds;
-    });
-  </script>
-  <script src="/scripts/config.js"></script>
-  <script src="/scripts/server.js"></script>
-
-  <script src="https://js.puter.com/v2/"></script>
-  <script>
-    async function getChristmasMessage() {
-      try {
-        const res = await puter.ai.chat(
-          "Write a short festive Christmas message.",
-          {
-            model: "gpt-5-nano",
-          }
+        //calculation for days, hours, minuets and seconds
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor(
+          (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
         );
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-        // Check if message exists
-        if (res && res.message && res.message.content) {
+        //sets the elements to be equal to the values
+        document.getElementById("days").innerHTML = days;
+        document.getElementById("hours").innerHTML = hours;
+        document.getElementById("minutes").innerHTML = minutes;
+        document.getElementById("seconds").innerHTML = seconds;
+      });
+    </script>
+
+    <script src="https://js.puter.com/v2/"></script>
+    <script>
+      async function getChristmasMessage() {
+        try {
+          const res = await puter.ai.chat(
+            "Write a short festive Christmas message.",
+            {
+              model: "gpt-5-nano",
+            }
+          );
+
+          // Check if message exists
+          if (res && res.message && res.message.content) {
+            document.getElementById("christmas-message").innerText =
+              res.message.content;
+          } else {
+            document.getElementById("christmas-message").innerText =
+              "No message returned";
+          }
+        } catch (err) {
+          console.error(err);
           document.getElementById("christmas-message").innerText =
-            res.message.content;
-        } else {
-          document.getElementById("christmas-message").innerText =
-            "No message returned";
+            "Failed to fetch AI message. Please reload.";
         }
-      } catch (err) {
-        console.error(err);
-        document.getElementById("christmas-message").innerText =
-          "Failed to fetch AI message. Please reload.";
       }
-    }
 
-    // Call on page load
-    getChristmasMessage();
-  </script>
+      // Call on page load
+      getChristmasMessage();
+    </script>
+
+    <script>
+      const snowFlakeCount = 100;
+      const snowContainer = document.querySelector(".snowfall-container");
+      for (let i = 0; i < snowFlakeCount; i++) {
+        //generate snowflakes
+        const snowFlake = document.createElement("div");
+        snowFlake.classList.add("snowflake");
+        snowFlake.style.left = Math.random() * 100 + "vw";
+        snowFlake.style.animationDuration = 5 + Math.random() * 10 + "s";
+        snowFlake.style.opacity = Math.random();
+        snowFlake.style.fontSize = 10 + Math.random() * 20 + "px";
+        snowFlake.style.animationDelay = Math.random() * -10 + "s";
+
+        snowFlake.innerText = "❄";
+        document.body.appendChild(snowFlake);
+      }
+    </script>
+  </body>
 </html>
