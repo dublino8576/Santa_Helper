@@ -23,7 +23,7 @@
     </section>
 
     <!-- Ai generated message  -->
-    <section class="messge">
+    <section class="messages">
       <div id="christmas-message"></div>
     </section>
   </body>
@@ -47,10 +47,13 @@
       var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
       var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
+      //sets the elements to be equal to the values
       document.getElementById("days").innerHTML = days;
       document.getElementById("hours").innerHTML = hours;
       document.getElementById("minutes").innerHTML = minutes;
       document.getElementById("seconds").innerHTML = seconds;
     });
   </script>
+
+  <script src="/scripts/server.js"></script>
 </html>
