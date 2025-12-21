@@ -54,6 +54,36 @@
       document.getElementById("seconds").innerHTML = seconds;
     });
   </script>
-
+  <script src="/scripts/config.js"></script>
   <script src="/scripts/server.js"></script>
+
+  <script src="https://js.puter.com/v2/"></script>
+  <script>
+    async function getChristmasMessage() {
+      try {
+        const res = await puter.ai.chat(
+          "Write a short festive Christmas message.",
+          {
+            model: "gpt-5-nano",
+          }
+        );
+
+        // Check if message exists
+        if (res && res.message && res.message.content) {
+          document.getElementById("christmas-message").innerText =
+            res.message.content;
+        } else {
+          document.getElementById("christmas-message").innerText =
+            "No message returned";
+        }
+      } catch (err) {
+        console.error(err);
+        document.getElementById("christmas-message").innerText =
+          "Failed to fetch AI message. Please reload.";
+      }
+    }
+
+    // Call on page load
+    getChristmasMessage();
+  </script>
 </html>
