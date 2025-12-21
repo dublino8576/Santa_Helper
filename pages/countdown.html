@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <title>Christmas Wishlist Countdown</title>
+    <link rel="stylesheet" href="../styles/countdown.css" />
+    <link rel="stylesheet" href="../styles/global.css" />
+  </head>
+  <body>
+    <!-- Count down timer  -->
+    <section class="timer">
+      <div id="countdown-timer">
+        <span id="days"> </span>
+        <span id="hours"> </span>
+        <span id="minutes"> </span>
+        <span id="seconds"> </span>
+      </div>
+    </section>
+
+    <!-- Ai generated message  -->
+    <section class="messge">
+      <div id="christmas-message"></div>
+    </section>
+  </body>
+
+  <script>
+    // sets variable to store christmas day
+    var christmasDay = new Date("Dec 25, 2025 00:00:00").getTime();
+
+    //updates every second
+    var x = setInterval(function () {
+      //initialises current date
+      var now = new Date().getTime();
+
+      var distance = christmasDay - now; //distance between today and christmas
+
+      //calculation for days, hours, minuets and seconds
+      var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      var hours = Math.floor(
+        (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+      );
+      var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      document.getElementById("days").innerHTML = days;
+      document.getElementById("hours").innerHTML = hours;
+      document.getElementById("minutes").innerHTML = minutes;
+      document.getElementById("seconds").innerHTML = seconds;
+    });
+  </script>
+</html>
