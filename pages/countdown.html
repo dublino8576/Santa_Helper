@@ -13,9 +13,7 @@
     class="m-8 min-h-screen text-center flex items-center justify-center h-screen flex-col"
   >
     <div class="text-center mb-8">
-      <h1
-        class="text-3xl sm:text-5xl md:text-6xl font-extrabold text-white drop-shadow-lg"
-      >
+      <h1 class="text-3xl sm:text-5xl md:text-6xl text-white drop-shadow-lg">
         🎅 Santa is coming! Get ready!
       </h1>
       <p class="text-lg sm:text-xl text-white/80 mt-2">
@@ -106,24 +104,25 @@
       async function getChristmasMessage() {
         try {
           const res = await puter.ai.chat(
+            //prompt to generate message
             "Write a short festive Christmas message.",
             {
-              model: "gpt-5-nano",
+              model: "gpt-5-nano", //model used
             }
           );
 
           // Check if message exists
           if (res && res.message && res.message.content) {
             document.getElementById("christmas-message").innerText =
-              res.message.content;
+              res.message.content; // returns response within innerhtml of element
           } else {
             document.getElementById("christmas-message").innerText =
-              "No message returned";
+              "No message returned"; // if no response is returned
           }
         } catch (err) {
           console.error(err);
           document.getElementById("christmas-message").innerText =
-            "Failed to fetch AI message. Please reload.";
+            "Failed to fetch AI message. Please reload."; //error handeling
         }
       }
 
