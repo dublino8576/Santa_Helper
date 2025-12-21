@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="/styles/snowfall.css" />
     <title>Christmas Wishlist Form</title>
   </head>
-  <body class="min-h-screen">
+  <body class="min-h-screen mx-auto">
     <div class="snowfall-container"></div>
     <div class="container mx-auto px-4 py-12 max-w-2xl">
       <!-- Introductory Section -->
@@ -39,7 +39,7 @@
             <input
               type="text"
               id="item-name"
-              name="item-name"
+              name="itemName"
               required
               placeholder="e.g., PlayStation 5, Cozy Sweater"
               class="block w-full rounded-lg bg-white/10 border border-white/20 px-4 py-3 text-white placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent transition"
@@ -57,7 +57,7 @@
             <input
               type="url"
               id="item-image"
-              name="item-image"
+              name="itemImage"
               required
               placeholder="https://example.com/image.jpg"
               class="block w-full rounded-lg bg-white/10 border border-white/20 px-4 py-3 text-white placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent transition"
@@ -77,7 +77,7 @@
             </label>
             <textarea
               id="item-description"
-              name="item-description"
+              name="itemDescription"
               rows="4"
               placeholder="Tell us why you'd love this item or any special details..."
               class="block w-full rounded-lg bg-white/10 border border-white/20 px-4 py-3 text-white placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent transition resize-none"
@@ -89,6 +89,7 @@
         <div class="mt-8">
           <button
             type="submit"
+            id="submit-form"
             class="w-full bg-gradient-to-r from-red-600 to-green-600 hover:from-red-700 hover:to-green-700 text-white font-bold py-4 px-6 rounded-lg shadow-lg transform transition hover:scale-105 focus:outline-none focus:ring-4 focus:ring-red-500/50"
           >
             Add to Christmas Tree
@@ -96,6 +97,7 @@
         </div>
       </form>
     </div>
+    <script src="../scripts/localStorage.js"></script>
     <script>
       const snowFlakeCount = 100;
       const snowContainer = document.querySelector(".snowfall-container");
@@ -110,7 +112,7 @@
         snowFlake.style.animationDelay = Math.random() * -10 + "s";
 
         snowFlake.innerText = "❄";
-        document.body.appendChild(snowFlake);
+        snowContainer.appendChild(snowFlake);
       }
     </script>
   </body>
