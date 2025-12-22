@@ -13,7 +13,8 @@ function loadWishlist() {
   wishlist.forEach((item, index) => {
     const card = document.createElement("div");
     card.className =
-      "bg-white/10 border border-white/20 rounded-lg p-3 sm:p-4 text-white shadow-lg w-56 sm:w-64 md:w-72 flex-shrink-0 snap-start flex flex-col justify-between";
+      "bg-white/10 border border-white/20 rounded-lg p-3 sm:p-4 text-white shadow-lg w-56 sm:w-64 md:w-72 flex-shrink-0 snap-start flex flex-col justify-between hover:shadow-xl transition";
+    card.setAttribute("data-index", index);
 
     card.innerHTML = `
       <div>
@@ -21,11 +22,11 @@ function loadWishlist() {
         <h2 class="text-xl font-semibold mb-2">${item.name}</h2>
         <p class="text-sm text-gray-300 mb-4 line-clamp-3">${item.description}</p>
       </div>
-      <div class="flex gap-2 items-end justify-between">
-        <button type="button" class="read-more-btn text-white bg-red-600 hover:bg-red-700 focus:ring-4 focus:ring-red-500/50 shadow-md font-medium rounded-lg text-sm px-4 py-2.5 focus:outline-none transition flex items-center justify-center gap-2 flex-1" data-index="${index}">
+      <div class="flex gap-2 items-end justify-between" >
+        <button type="button" class="cursor-pointer read-more-btn text-white bg-red-600 hover:bg-red-700 focus:ring-4 focus:ring-red-500/50 shadow-md font-medium rounded-lg text-sm px-4 py-2.5 focus:outline-none transition flex items-center justify-center gap-2 flex-1" data-index="${index}">
           Read More <span class="text-lg">→</span>
         </button>
-        <button type="button" class="delete-btn w-8 h-8 rounded-full bg-red-600 hover:bg-red-700 focus:ring-2 focus:ring-red-500/50 text-white font-bold text-sm flex items-center justify-center focus:outline-none transition flex-shrink-0" data-index="${index}" onClick="deleteWishCard(${index})" title="Delete item">
+        <button type="button" class=" cursor-pointer delete-btn w-8 h-8 rounded-full bg-red-600 hover:bg-red-700 focus:ring-2 focus:ring-red-500/50 text-white font-bold text-sm flex items-center justify-center focus:outline-none transition flex-shrink-0" data-index="${index}" onClick="deleteWishCard(${index})" title="Delete item" > 
           ✕
         </button>
       </div>
@@ -60,17 +61,6 @@ function setupModalListeners() {
         modalOverlay.classList.remove("hidden");
       }
     }
-
-    // Delete button functionality
-    // if (e.target.classList.contains("delete-btn")) {
-    //   const index = e.target.dataset.index;
-    //   if (confirm("Are you sure you want to delete this item?")) {
-    //     const wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
-    //     wishlist.splice(index, 1);
-    //     localStorage.setItem("wishlist", JSON.stringify(wishlist));
-    //     loadWishlist();
-    //   }
-    // }
   });
 
   // Close modal
