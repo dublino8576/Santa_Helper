@@ -1,6 +1,6 @@
 body {
   position: relative;
-  background: linear-gradient(#1090d0, #2612aa 85%);
+  z-index: -1;
 }
 
 /* Container to hold the snowflakes */

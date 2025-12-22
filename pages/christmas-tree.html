@@ -4,11 +4,27 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../styles/global.css" />
+    <link rel="stylesheet" href="../styles/section-headings.css" />
+    <link rel="stylesheet" href="../styles/feature-cards.css" />
     <link rel="stylesheet" href="../styles/snowfall.css" />
     <link rel="stylesheet" href="../styles/tree.css" />
+    <link rel="stylesheet" href="../styles/nav.css" />
+    <link rel="stylesheet" href="../styles/footer.css" />
+    <link rel="stylesheet" href="../styles/decorative-elements.css" />
+
     <title>Christmas Tree</title>
   </head>
   <body class="min-h-screen">
+    <!-- Navigation Component (loaded dynamically) -->
+    <div id="nav-placeholder"></div>
     <div class="snowfall-container"></div>
 
     <div
@@ -26,7 +42,7 @@
     </div>
 
     <!-- Wishlist Cards Container -->
-    <div class="px-4 mt-8 mb-12 z-20">
+    <div id="wishlist-section" class="px-4 mt-8 mb-12 z-20">
       <div class="container mx-auto max-w-5xl">
         <div
           class="bg-white/10 backdrop-blur-lg rounded-2xl shadow-2xl p-4 border border-dashed border-white/20 border-4"
@@ -50,7 +66,7 @@
       >
         <button
           id="modal-close"
-          class="absolute top-4 right-4 text-white hover:text-gray-300 text-2xl font-bold"
+          class="absolute top-4 right-4 text-white hover:text-gray-300 cursor-pointer text-2xl font-bold"
         >
           ✕
         </button>
@@ -61,8 +77,10 @@
         ></p>
       </div>
     </div>
-
+    <!-- Footer Component (loaded dynamically) -->
+    <div id="footer-placeholder"></div>
     <script src="../scripts/snowfall.js"></script>
     <script src="../scripts/wishlist.js"></script>
+    <script src="../scripts/component-loader.js"></script>
   </body>
 </html>

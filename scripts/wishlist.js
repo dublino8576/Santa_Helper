@@ -9,11 +9,16 @@ function loadWishlist() {
   const container = document.getElementById("wishlist-container");
 
   container.innerHTML = ""; // Clear previous content
-
+  if (wishlist.length === 0) {
+    container.innerHTML = `
+      <p class="text-white text-center w-full py-10">Your wishlist is empty. Start adding items! <a class="feature-link" href="../pages/wishlist-form.html">Wishlist Form</a></p>
+    `;
+    return;
+  }
   wishlist.forEach((item, index) => {
     const card = document.createElement("div");
     card.className =
-      "bg-white/10 border border-white/20 rounded-lg p-3 sm:p-4 text-white shadow-lg w-56 sm:w-64 md:w-72 flex-shrink-0 snap-start flex flex-col justify-between hover:shadow-xl transition";
+      "bg-white/10 border border-white/20 rounded-lg p-3 sm:p-4 text-white shadow-lg w-56 sm:w-64 md:w-72 flex-shrink-0 snap-start flex flex-col justify-between hover:shadow-xl transition card-accent-gold";
     card.setAttribute("data-index", index);
 
     card.innerHTML = `
@@ -23,7 +28,7 @@ function loadWishlist() {
         <p class="text-sm text-gray-300 mb-4 line-clamp-3">${item.description}</p>
       </div>
       <div class="flex gap-2 items-end justify-between" >
-        <button type="button" class="cursor-pointer read-more-btn text-white bg-red-600 hover:bg-red-700 focus:ring-4 focus:ring-red-500/50 shadow-md font-medium rounded-lg text-sm px-4 py-2.5 focus:outline-none transition flex items-center justify-center gap-2 flex-1" data-index="${index}">
+        <button type="button" class="cursor-pointer read-more-btn text-white bg-red-600 hover:bg-red-700 focus:ring-4 focus:ring-red-500/50 shadow-md font-medium rounded-lg text-sm px-4 py-2.5 feature-link  focus:outline-none transition flex items-center justify-center gap-2 flex-1" data-index="${index}">
           Read More <span class="text-lg">→</span>
         </button>
         <button type="button" class=" cursor-pointer delete-btn w-8 h-8 rounded-full bg-red-600 hover:bg-red-700 focus:ring-2 focus:ring-red-500/50 text-white font-bold text-sm flex items-center justify-center focus:outline-none transition flex-shrink-0" data-index="${index}" onClick="deleteWishCard(${index})" title="Delete item" > 
