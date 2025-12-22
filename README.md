@@ -50,7 +50,8 @@ The site is structured for quick iteration: components are loaded dynamically, s
 |-- pages/             # Standalone feature pages: tree, countdown, wishlist form, about
 |-- scripts/           # Vanilla JS modules for loading, navigation, chatbot, wishlist, effects
 |-- styles/            # Global + feature-specific CSS (nav, hero, tree, countdown, etc.)
-|-- assets/ | images/  # Artwork, ornaments, hero illustrations
+|-- assets/            # Shared art assets (hero images, icons)
+|-- images/            # Page-specific imagery and ornaments
 |-- COMPONENT-GUIDE.md # Internal reference for building and composing components
 `-- README.md          # You are here
 ```
@@ -69,10 +70,7 @@ The site is structured for quick iteration: components are loaded dynamically, s
    git clone https://github.com/<your-org>/the_christmas_tree_project.git
    cd the_christmas_tree_project
    ```
-2. Open `index.html` in your browser or start a lightweight static server:  
-   ```bash
-   npx serve .
-   ```
+2. Open `index.html` (double-click the file or use a simple static server such as VS Code Live Server). Every feature page lives under `pages/`, so you can browse directly to `pages/countdown.html`, `pages/christmas-tree.html`, etc.
 3. Ensure you have internet access for `https://js.puter.com/v2/`; the chatbot and AI message rely on that script.
 
 ## Usage Guide
@@ -113,6 +111,9 @@ Automated tests are not in place yet, so manual verification is recommended:
 5. Commit with meaningful messages, push, and open a pull request describing what’s new and how to verify it.
 
 ## License & Credits
-- **License:** TBD — choose the license that fits your deployment plans (MIT is common for hackathon projects).
-- **Credits:** Built by the Christmas Tree Project team (Shaqkori Mahoney, Lochlann O'Higgins, Luca Di Maio) with inspiration from Lochy’s chatbot CodePen and powered by Puter AI for conversational features.
-- **Assets:** Fonts via Google Fonts; hero imagery, ornaments, and other visuals live under `assets/` and `images/`.
+- **License:** TBD - pick the license that best fits your sharing/deployment goals (MIT recommended for open hackathon work).
+- **Project team:**  
+  - Shaqkori Mahoney — countdown feature, festive AI messages, snowfall polish  
+  - Lochlann O'Higgins — chatbot widget, design direction, shared component system  
+  - Luca Di Maio — Scrum facilitation, layout/animation work, wishlist UX
+- **Inspiration & tooling:** Chatbot styling draws from [Lochy's CodePen](https://codepen.io/Lochy2000/pen/VYLVKgL); conversational features use Puter AI (GPT-5 Nano); Tailwind browser build assists select layouts; fonts are provided by Google Fonts; imagery lives under `assets/` and `images/`.
