@@ -34,7 +34,7 @@ function adjustComponentLinks() {
 
   if (isInPages) {
     // Fix nav and footer links when loaded in /pages/ subdirectory
-    document.querySelectorAll('#nav-placeholder a, #footer-placeholder a').forEach(link => {
+    document.querySelectorAll('#nav-placeholder a, #footer-placeholder a, #hero-placeholder a').forEach(link => {
       let href = link.getAttribute('href');
       if (href && href.startsWith('./pages/')) {
         link.setAttribute('href', href.replace('./pages/', './'));
@@ -48,6 +48,13 @@ function adjustComponentLinks() {
     if (chatbotImg) {
       const src = chatbotImg.getAttribute('src');
       chatbotImg.setAttribute('src', '../' + src.substring(2));
+    }
+
+    // Fix hero image
+    const heroImg = document.querySelector('#hero-placeholder img[src^="./assets"]');
+    if (heroImg) {
+      const src = heroImg.getAttribute('src');
+      heroImg.setAttribute('src', '../' + src.substring(2));
     }
   }
 }
