@@ -4,15 +4,30 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <link rel="stylesheet" href="../styles/snowfall.css" />
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="../styles/global.css" />
+    <link rel="stylesheet" href="../styles/section-headings.css" />
+    <link rel="stylesheet" href="../styles/feature-cards.css" />
+    <link rel="stylesheet" href="../styles/snowfall.css" />
+    <link rel="stylesheet" href="../styles/tree.css" />
+    <link rel="stylesheet" href="../styles/nav.css" />
+    <link rel="stylesheet" href="../styles/footer.css" />
+    <link rel="stylesheet" href="../styles/decorative-elements.css" />
     <title>Christmas Wishlist Form</title>
   </head>
   <body class="min-h-screen mx-auto">
     <div class="snowfall-container"></div>
-    <div class="container mx-auto px-4 py-12 max-w-2xl">
+    <!-- Navigation Component (loaded dynamically) -->
+    <div id="nav-placeholder"></div>
+    <div id="form-intro" class="container mx-auto px-4 py-12 max-w-2xl">
       <!-- Introductory Section -->
-      <div class="text-center mb-12">
+      <div class="text-center mb-12 section-heading">
         <h1 class="text-4xl font-bold text-white mb-4">
           Create Your Christmas Wishlist
         </h1>
@@ -121,8 +136,11 @@
         </button>
       </div>
     </div>
-
+    <!-- Footer Component (loaded dynamically) -->
+    <div id="footer-placeholder"></div>
     <script src="../scripts/localStorage.js"></script>
     <script src="../scripts/snowfall.js"></script>
+    <script src="../scripts/component-loader.js"></script>
+    <script src="../scripts/nav.js"></script>
   </body>
 </html>
