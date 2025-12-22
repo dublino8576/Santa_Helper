@@ -4,3 +4,33 @@
     <img src="/assets/images/ornaments/elf.png" alt="Santa's Helper Elf" class="elf-icon">
   </button>
 </div>
+
+<!-- Chatbot Modal -->
+<div class="chatbot-modal" role="dialog" aria-modal="true" aria-hidden="true">
+  <div class="chatbot-panel">
+    <header class="chatbot-header">
+      <div>
+        <p class="chatbot-label">Santa's Helper</p>
+        <p class="chatbot-subtitle">Festive gift ideas powered by AI</p>
+      </div>
+      <button class="chatbot-close" aria-label="Close chat">&times;</button>
+    </header>
+
+    <p class="chatbot-status" role="status" aria-live="polite" hidden></p>
+
+    <div class="chatbot-messages" aria-live="polite"></div>
+
+    <form class="chatbot-form" autocomplete="off">
+      <label class="sr-only" for="chatbot-input">Tell the elf about your person</label>
+      <input
+        type="text"
+        id="chatbot-input"
+        class="chatbot-input"
+        name="chatbotInput"
+        placeholder="e.g. brother who loves cooking"
+        required
+      >
+      <button type="submit" class="btn-primary chatbot-submit">Send</button>
+    </form>
+  </div>
+</div>
