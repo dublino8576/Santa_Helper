@@ -1,6 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("wishlist-form");
-
   form.addEventListener("submit", (e) => {
     e.preventDefault();
 
@@ -18,6 +17,16 @@ function saveToLocalStorage() {
     return;
   } else {
     document.getElementById("name-error").classList.add("hidden");
+  }
+  if (
+    itemImage.value.startsWith("http://") ||
+    itemImage.value.startsWith("https://")
+  ) {
+    document.getElementById("image-error").classList.add("hidden");
+  } else {
+    console.log("invalid image url");
+    document.getElementById("image-error").classList.remove("hidden");
+    return;
   }
   if (wishlist.length === 8) {
     document.getElementById("inventory-full").classList.remove("hidden");
