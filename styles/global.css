@@ -3,14 +3,17 @@
 ---------------------------------- */
 
 :root {
-  /* Palette */
-  --color-bg-primary: #0d1b2a;      /* deep winter navy */
-  --color-bg-secondary: #1b263b;
-  --color-bg-accent: #415a77;
-  --color-text-light: #e0e5ec;
-  --color-accent: #d8572a;          /* festive warm accent */
-  --color-snow: #f8f9fa;
-  --color-gold: #f6d469;
+  /* Christmas Palette - inspired by the ornaments and winter scene */
+  --color-bg-primary: #1a2845;      /* deep night blue */
+  --color-bg-secondary: #2d3e5f;
+  --color-bg-accent: #3a5270;
+  --color-text-light: #e8eef5;
+  --color-accent: #c94a3d;          /* warm red from berries */
+  --color-snow: #ffffff;
+  --color-gold: #ffd166;            /* warm golden yellow */
+  --color-green: #2d5a3f;           /* pine green */
+  --color-red: #d4434a;             /* bright Christmas red */
+  --color-berry: #c2313a;           /* deep berry red */
 
   /* Fonts */
   --font-heading: 'Playfair Display', serif;
@@ -30,6 +33,7 @@ html, body {
   font-family: var(--font-body);
   color: var(--color-text-light);
   background-color: var(--color-bg-primary);
+  overflow-x: hidden;
 }
 
 /* Headings */
@@ -46,6 +50,132 @@ h1, h2, h3, h4 {
 }
 
 /* ----------------------------------
+   LAYOUT HELPERS
+---------------------------------- */
+
+/* Section Wrappers */
+.section-wrapper {
+  padding: var(--space-section) 0;
+  background: transparent;
+  position: relative;
+  z-index: 2; /* Above fixed background */
+}
+
+.section-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  position: relative;
+}
+
+.section-center {
+  text-align: center;
+}
+
+.section-dark {
+  background: rgba(45, 62, 95, 0.2);
+}
+
+/* Scroll animations */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.animate-on-scroll.animated {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.slide-in-left {
+  opacity: 0;
+  transform: translateX(-100px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.slide-in-left.animated {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.slide-in-right {
+  opacity: 0;
+  transform: translateX(100px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.slide-in-right.animated {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Spacing Utilities */
+.mt-1 { margin-top: 0.5rem; }
+.mt-2 { margin-top: 1rem; }
+.mt-3 { margin-top: 1.5rem; }
+.mt-4 { margin-top: 2rem; }
+.mt-5 { margin-top: 3rem; }
+
+.mb-1 { margin-bottom: 0.5rem; }
+.mb-2 { margin-bottom: 1rem; }
+.mb-3 { margin-bottom: 1.5rem; }
+.mb-4 { margin-bottom: 2rem; }
+.mb-5 { margin-bottom: 3rem; }
+
+.py-1 { padding-top: 0.5rem; padding-bottom: 0.5rem; }
+.py-2 { padding-top: 1rem; padding-bottom: 1rem; }
+.py-3 { padding-top: 1.5rem; padding-bottom: 1.5rem; }
+.py-4 { padding-top: 2rem; padding-bottom: 2rem; }
+
+.px-1 { padding-left: 0.5rem; padding-right: 0.5rem; }
+.px-2 { padding-left: 1rem; padding-right: 1rem; }
+.px-3 { padding-left: 1.5rem; padding-right: 1.5rem; }
+.px-4 { padding-left: 2rem; padding-right: 2rem; }
+
+/* Grid Layouts */
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.grid-4 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+}
+
+/* Flex Utilities */
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.gap-1 { gap: 0.5rem; }
+.gap-2 { gap: 1rem; }
+.gap-3 { gap: 1.5rem; }
+.gap-4 { gap: 2rem; }
+
+/* ----------------------------------
    CUSTOM UTILITY CLASSES
 ---------------------------------- */
 
@@ -56,13 +186,52 @@ h1, h2, h3, h4 {
     text-shadow: 0px 0px 10px rgba(255,255,255,0.5);
   }
 
-  /* frosted glass card */
-  .frost-card {
-    backdrop-filter: blur(8px);
-    background: rgba(255,255,255,0.06);
+  /* Text alignment */
+  .text-center { text-align: center; }
+  .text-left { text-align: left; }
+  .text-right { text-align: right; }
+
+  /* Card Components - Enhanced Frosted Glass */
+  .card {
+    background: rgba(20, 35, 65, 0.35);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 1.2rem;
+    padding: 2rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+  }
+
+  .card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 32px rgba(0,0,0,0.4);
+    background: rgba(20, 35, 65, 0.5);
+    border-color: rgba(255,255,255,0.2);
+  }
+
+  .card-title {
+    margin: 0 0 1rem 0;
+    color: var(--color-snow);
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+
+  .card-text {
+    margin: 0 0 1.5rem 0;
+    line-height: 1.7;
+    color: var(--color-text-light);
+    opacity: 0.95;
+  }
+
+  /* frosted glass card - even more transparent */
+  .card-frost {
+    backdrop-filter: blur(16px);
+    background: rgba(20, 35, 65, 0.25);
     border: 1px solid rgba(255,255,255,0.15);
-    border-radius: 1rem;
-    padding: 1.5rem;
+  }
+
+  .card-frost:hover {
+    background: rgba(20, 35, 65, 0.45);
   }
 
   /* clean CTA button */
@@ -73,9 +242,30 @@ h1, h2, h3, h4 {
     padding: .6rem 1.4rem;
     border-radius: .75rem;
     display: inline-block;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: filter 0.2s ease;
   }
   .btn-primary:hover {
     filter: brightness(1.15);
+  }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--color-gold);
+    font-weight: 500;
+    padding: .6rem 1.4rem;
+    border-radius: .75rem;
+    border: 2px solid var(--color-gold);
+    display: inline-block;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .btn-secondary:hover {
+    background: var(--color-gold);
+    color: var(--color-bg-primary);
   }
 
   /* subtle gradient background wrapper */
