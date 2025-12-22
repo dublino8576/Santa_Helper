@@ -1,111 +1,138 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Christmas Tree - Home</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Christmas Tree - Home</title>
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
 
-  <!-- Stylesheets -->
-  <link rel="stylesheet" href="/styles/global.css">
-  <link rel="stylesheet" href="/styles/nav.css">
-  <link rel="stylesheet" href="/styles/footer.css">
-  <link rel="stylesheet" href="/styles/hero.css">
-  <link rel="stylesheet" href="/styles/section-headings.css">
-  <link rel="stylesheet" href="/styles/feature-cards.css">
-  <link rel="stylesheet" href="/styles/chatbot-widget.css">
-  <link rel="stylesheet" href="/styles/decorative-elements.css">
-</head>
-<body>
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="styles/global.css" />
+    <link rel="stylesheet" href="styles/nav.css" />
+    <link rel="stylesheet" href="styles/footer.css" />
+    <link rel="stylesheet" href="styles/hero.css" />
+    <link rel="stylesheet" href="styles/section-headings.css" />
+    <link rel="stylesheet" href="styles/feature-cards.css" />
+    <link rel="stylesheet" href="styles/chatbot-widget.css" />
+    <link rel="stylesheet" href="styles/decorative-elements.css" />
+  </head>
+  <body>
+    <!-- Navigation Component (loaded dynamically) -->
+    <div id="nav-placeholder"></div>
 
-  <!-- Navigation Component (loaded dynamically) -->
-  <div id="nav-placeholder"></div>
+    <!-- Chatbot Widget (loaded dynamically) -->
+    <div id="chatbot-placeholder"></div>
 
-  <!-- Chatbot Widget (loaded dynamically) -->
-  <div id="chatbot-placeholder"></div>
+    <!-- Main Content -->
+    <main>
+      <!-- Hero Section (loaded dynamically) -->
+      <div id="hero-placeholder"></div>
 
-  <!-- Main Content -->
-  <main>
+      <!-- Features Section -->
+      <section class="section-wrapper" id="features" style="position: relative">
+        <div class="section-container">
+          <h2 class="section-heading animate-on-scroll">Explore the Magic</h2>
+          <p
+            class="section-subheading animate-on-scroll"
+            style="transition-delay: 0.1s"
+          >
+            Discover festive features to make your Christmas season
+            unforgettable
+          </p>
 
-    <!-- Hero Section (loaded dynamically) -->
-    <div id="hero-placeholder"></div>
+          <div class="grid-3" style="position: relative">
+            <!-- Wreath decorations around the grid -->
+            <img
+              src="assets/images/ornaments/1.png"
+              class="wreath-decoration wreath-top-left"
+              alt=""
+            />
+            <img
+              src="assets/images/ornaments/1.png"
+              class="wreath-decoration wreath-bottom-right"
+              alt=""
+            />
+            <!-- Feature 1 -->
+            <div
+              class="card card-frost card-accent-gold slide-in-left"
+              style="transition-delay: 0.2s"
+            >
+              <h3 class="card-title">Christmas Wishlist</h3>
+              <p class="card-text">
+                Create and share your perfect holiday wishlist with loved ones.
+                Make this season's gift-giving magical and meaningful.
+              </p>
+              <a href="pages/christmas-tree.html" class="feature-link">
+                Explore Wishlist <span class="arrow">→</span>
+              </a>
+            </div>
 
-    <!-- Features Section -->
-    <section class="section-wrapper" id="features" style="position: relative;">
-      <div class="section-container">
-        <h2 class="section-heading animate-on-scroll">Explore the Magic</h2>
-        <p class="section-subheading animate-on-scroll" style="transition-delay: 0.1s;">
-          Discover festive features to make your Christmas season unforgettable
-        </p>
+            <!-- Feature 2 -->
+            <div
+              class="card card-frost card-accent-red animate-on-scroll"
+              style="transition-delay: 0.3s"
+            >
+              <h3 class="card-title">Holiday Countdown</h3>
+              <p class="card-text">
+                Feel the anticipation grow as you track the days, hours, and
+                minutes until Christmas morning arrives with all its magic.
+              </p>
+              <a href="pages/countdown.html" class="feature-link">
+                Start Counting <span class="arrow">→</span>
+              </a>
+            </div>
 
-        <div class="grid-3" style="position: relative;">
-          <!-- Wreath decorations around the grid -->
-          <img src="/assets/images/ornaments/1.png" class="wreath-decoration wreath-top-left" alt="">
-          <img src="/assets/images/ornaments/1.png" class="wreath-decoration wreath-bottom-right" alt="">
-          <!-- Feature 1 -->
-          <div class="card card-frost card-accent-gold slide-in-left" style="transition-delay: 0.2s;">
-            <h3 class="card-title">Christmas Wishlist</h3>
-            <p class="card-text">
-              Create and share your perfect holiday wishlist with loved ones.
-              Make this season's gift-giving magical and meaningful.
-            </p>
-            <a href="/pages/wishlist.html" class="feature-link">
-              Explore Wishlist <span class="arrow">→</span>
-            </a>
-          </div>
-
-          <!-- Feature 2 -->
-          <div class="card card-frost card-accent-red animate-on-scroll" style="transition-delay: 0.3s;">
-            <h3 class="card-title">Holiday Countdown</h3>
-            <p class="card-text">
-              Feel the anticipation grow as you track the days, hours, and minutes
-              until Christmas morning arrives with all its magic.
-            </p>
-            <a href="/pages/countdown.html" class="feature-link">
-              Start Counting <span class="arrow">→</span>
-            </a>
-          </div>
-
-          <!-- Feature 3 -->
-          <div class="card card-frost card-accent-green slide-in-right" style="transition-delay: 0.4s;">
-            <h3 class="card-title">Santa's Little Helper</h3>
-            <p class="card-text">
-              Get personalized gift ideas and holiday inspiration from our friendly
-              AI assistant. Making your season merry and bright!
-            </p>
-            <a href="/pages/chatbot.html" class="feature-link">
-              Chat Now <span class="arrow">→</span>
-            </a>
+            <!-- Feature 3 -->
+            <div
+              class="card card-frost card-accent-green slide-in-right"
+              style="transition-delay: 0.4s"
+            >
+              <h3 class="card-title">Santa's Little Helper</h3>
+              <p class="card-text">
+                Get personalized gift ideas and holiday inspiration from our
+                friendly AI assistant. Making your season merry and bright!
+              </p>
+              <a href="pages/chatbot.html" class="feature-link">
+                Chat Now <span class="arrow">→</span>
+              </a>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- Making Spirits Bright Section -->
-    <section class="section-wrapper section-dark">
-      <div class="section-container section-center">
-        <h2 class="section-heading mb-3 slide-in-left">
-          Making Spirits Bright
-        </h2>
-        <p class="section-subheading slide-in-right" style="transition-delay: 0.2s;">
-          From tracking your wishlist to counting down the days,
-          we're here to help you celebrate the most wonderful time of the year.
-          Create lasting memories with family and friends.
-        </p>
-        <div class="hero-actions" style="justify-content: center; margin-top: 2rem;">
-          <a href="/pages/wishlist.html" class="btn-primary">Get Started</a>
+      <!-- Making Spirits Bright Section -->
+      <section class="section-wrapper section-dark">
+        <div class="section-container section-center">
+          <h2 class="section-heading mb-3 slide-in-left">
+            Making Spirits Bright
+          </h2>
+          <p
+            class="section-subheading slide-in-right"
+            style="transition-delay: 0.2s"
+          >
+            From tracking your wishlist to counting down the days, we're here to
+            help you celebrate the most wonderful time of the year. Create
+            lasting memories with family and friends.
+          </p>
+          <div
+            class="hero-actions"
+            style="justify-content: center; margin-top: 2rem"
+          >
+            <a href="pages/wishlist.html" class="btn-primary">Get Started</a>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </main>
 
-  </main>
-
-  <!-- Footer Component (loaded dynamically) -->
-  <div id="footer-placeholder"></div>
+    <!-- Footer Component (loaded dynamically) -->
+    <div id="footer-placeholder"></div>
 
   <!-- Scripts (order matters: utilities first, then specific components, then loader last) -->
   <script src="https://js.puter.com/v2/" data-puter-sdk="true"></script>

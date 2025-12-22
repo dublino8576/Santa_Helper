@@ -1,0 +1,33 @@
+.christmas-tree {
+  position: relative;
+  z-index: -1;
+  background-image: url("../images/christmas-tree.webp");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: red;
+  top: 67px;
+  margin-bottom: 67px;
+}
+
+#wishlist-section {
+  margin-top: 5rem;
+  padding-top: 3rem;
+}
+
+/* width */
+.scrollbar::-webkit-scrollbar {
+  width: 20px;
+}
+
+/* Track */
+.scrollbar::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 10px;
+}
+
+/* Handle */
+.scrollbar::-webkit-scrollbar-thumb {
+  background: #1090d0;
+  border-radius: 10px;
+}
