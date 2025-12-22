@@ -1,0 +1,93 @@
+/* ===================================
+   CHATBOT WIDGET STYLES
+=================================== */
+
+.chatbot-widget {
+  position: fixed;
+  right: -5px;
+  top: 60%;
+  transform: translateY(-50%);
+  z-index: 999;
+}
+
+.chatbot-toggle {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  width: 150px;
+  height: 150px;
+  transition: transform 0.3s ease, filter 0.3s ease;
+  position: relative;
+}
+
+/* Enhanced hover - wiggle to show it's clickable */
+.chatbot-toggle:hover {
+  transform: scale(1.15);
+  filter: brightness(1.1);
+  animation: wiggle 0.6s ease;
+}
+
+.chatbot-toggle:active {
+  transform: scale(0.95);
+}
+
+.elf-icon {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(2px 4px 8px rgba(0, 0, 0, 0.3));
+}
+
+/* Wiggle animation to show clickability */
+@keyframes wiggle {
+  0%, 100% {
+    transform: scale(1.15) rotate(0deg);
+  }
+  25% {
+    transform: scale(1.15) rotate(-5deg);
+  }
+  75% {
+    transform: scale(1.15) rotate(5deg);
+  }
+}
+
+/* Subtle pulse to draw attention */
+.chatbot-toggle::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 120%;
+  height: 120%;
+  background: radial-gradient(circle, rgba(255, 215, 102, 0.2) 0%, transparent 70%);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  animation: pulse 2.5s infinite ease-in-out;
+  pointer-events: none;
+  z-index: -1;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(0.8);
+    opacity: 0;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.2);
+    opacity: 1;
+  }
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .chatbot-widget {
+    right: -3px;
+    top: 65%;
+  }
+
+  .chatbot-toggle {
+    width: 100px;
+    height: 100px;
+  }
+}

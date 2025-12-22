@@ -1,0 +1,40 @@
+/* ===================================
+   FEATURE CARDS COMPONENT STYLES
+=================================== */
+
+/* Feature Link */
+.feature-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--color-gold);
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.feature-link:hover {
+  color: var(--color-snow);
+  transform: translateX(4px);
+}
+
+.feature-link .arrow {
+  transition: transform 0.2s ease;
+}
+
+.feature-link:hover .arrow {
+  transform: translateX(4px);
+}
+
+/* Card Accent Borders */
+.card-accent-gold {
+  border-top: 3px solid var(--color-gold);
+}
+
+.card-accent-red {
+  border-top: 3px solid var(--color-accent);
+}
+
+.card-accent-green {
+  border-top: 3px solid var(--color-green);
+}
