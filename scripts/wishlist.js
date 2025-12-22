@@ -25,7 +25,7 @@ function loadWishlist() {
         <button type="button" class="read-more-btn text-white bg-red-600 hover:bg-red-700 focus:ring-4 focus:ring-red-500/50 shadow-md font-medium rounded-lg text-sm px-4 py-2.5 focus:outline-none transition flex items-center justify-center gap-2 flex-1" data-index="${index}">
           Read More <span class="text-lg">→</span>
         </button>
-        <button type="button" class="delete-btn w-8 h-8 rounded-full bg-red-600 hover:bg-red-700 focus:ring-2 focus:ring-red-500/50 text-white font-bold text-sm flex items-center justify-center focus:outline-none transition flex-shrink-0" data-index="${index}" title="Delete item">
+        <button type="button" class="delete-btn w-8 h-8 rounded-full bg-red-600 hover:bg-red-700 focus:ring-2 focus:ring-red-500/50 text-white font-bold text-sm flex items-center justify-center focus:outline-none transition flex-shrink-0" data-index="${index}" onClick="deleteWishCard(${index})" title="Delete item">
           ✕
         </button>
       </div>
@@ -62,15 +62,15 @@ function setupModalListeners() {
     }
 
     // Delete button functionality
-    if (e.target.classList.contains("delete-btn")) {
-      const index = e.target.dataset.index;
-      if (confirm("Are you sure you want to delete this item?")) {
-        const wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
-        wishlist.splice(index, 1);
-        localStorage.setItem("wishlist", JSON.stringify(wishlist));
-        loadWishlist();
-      }
-    }
+    // if (e.target.classList.contains("delete-btn")) {
+    //   const index = e.target.dataset.index;
+    //   if (confirm("Are you sure you want to delete this item?")) {
+    //     const wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+    //     wishlist.splice(index, 1);
+    //     localStorage.setItem("wishlist", JSON.stringify(wishlist));
+    //     loadWishlist();
+    //   }
+    // }
   });
 
   // Close modal
@@ -91,4 +91,15 @@ function setupModalListeners() {
       modalOverlay.classList.add("hidden");
     }
   });
+}
+
+/* Delete a wishcard from localStorage and reload display */
+function deleteWishCard(index) {
+  console.log("deleteWishCard called for index:", index);
+  if (confirm("Are you sure you want to delete this item?")) {
+    const wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+    wishlist.splice(index, 1);
+    localStorage.setItem("wishlist", JSON.stringify(wishlist));
+    loadWishlist();
+  }
 }
