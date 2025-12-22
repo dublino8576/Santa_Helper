@@ -5,6 +5,7 @@
  * - Modal open/close interactions
  * - Guided questionnaire before calling the AI helper
  * - Fetching gift ideas using Puter AI
+ * - I pulled the main chatbot deisgn style etc from https://codepen.io/Lochy2000/pen/VYLVKgL
  */
 
 const CHATBOT_QUESTIONS = [
@@ -77,6 +78,7 @@ function initChatbotWidget() {
   const messages = modal.querySelector('.chatbot-messages');
   const statusBanner = modal.querySelector('.chatbot-status');
 
+  // state dependent on the conversation
   const state = {
     questionIndex: 0,
     answers: {},
@@ -84,7 +86,7 @@ function initChatbotWidget() {
     loadingMessage: null,
     sdkWarmPromise: null
   };
-
+  // Function to update the status banner
   function updateStatus(message) {
     if (!statusBanner) return;
     if (message) {
@@ -95,7 +97,7 @@ function initChatbotWidget() {
       statusBanner.hidden = true;
     }
   }
-
+  // this function uses the sdkWarmPromise to ensure the SDK is loaded before we try to use it
   function warmUpSDK() {
     if (!state.sdkWarmPromise) {
       state.sdkWarmPromise = ensurePuterReady().finally(() => {
@@ -104,7 +106,7 @@ function initChatbotWidget() {
     }
     return state.sdkWarmPromise;
   }
-
+  // this function toggles the modal open and closed
   function toggleModal(open) {
     const isOpen = Boolean(open);
     modal.classList.toggle('active', isOpen);
