@@ -11,7 +11,8 @@
  */
 async function loadComponent(componentName, targetSelector) {
   try {
-    const response = await fetch(`/components/${componentName}.html`);
+    const basePath = window.location.pathname.includes('/pages/') ? '../' : './';
+    const response = await fetch(`${basePath}components/${componentName}.html`);
     if (!response.ok) throw new Error(`Failed to load ${componentName}`);
 
     const html = await response.text();
@@ -22,6 +23,39 @@ async function loadComponent(componentName, targetSelector) {
     }
   } catch (error) {
     console.error(`Error loading component ${componentName}:`, error);
+  }
+}
+
+/**
+ * Fix component links to work from both root and pages subdirectory
+ */
+function adjustComponentLinks() {
+  const isInPages = window.location.pathname.includes('/pages/');
+
+  if (isInPages) {
+    // Fix nav and footer links when loaded in /pages/ subdirectory
+    document.querySelectorAll('#nav-placeholder a, #footer-placeholder a, #hero-placeholder a').forEach(link => {
+      let href = link.getAttribute('href');
+      if (href && href.startsWith('./pages/')) {
+        link.setAttribute('href', href.replace('./pages/', './'));
+      } else if (href === './index.html') {
+        link.setAttribute('href', '../index.html');
+      }
+    });
+
+    // Fix chatbot widget image
+    const chatbotImg = document.querySelector('#chatbot-placeholder img[src^="./assets"]');
+    if (chatbotImg) {
+      const src = chatbotImg.getAttribute('src');
+      chatbotImg.setAttribute('src', '../' + src.substring(2));
+    }
+
+    // Fix hero image
+    const heroImg = document.querySelector('#hero-placeholder img[src^="./assets"]');
+    if (heroImg) {
+      const src = heroImg.getAttribute('src');
+      heroImg.setAttribute('src', '../' + src.substring(2));
+    }
   }
 }
 
@@ -44,6 +78,9 @@ async function loadComponents() {
   if (heroPlaceholder) {
     await loadComponent('hero', '#hero-placeholder');
   }
+
+  // Fix component links after loading
+  adjustComponentLinks();
 
   // Initialize navigation after components are loaded
   initNavigation();
