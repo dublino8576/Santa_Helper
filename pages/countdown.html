@@ -16,71 +16,74 @@
     <link rel="stylesheet" href="/styles/chatbot-widget.css" />
     <link rel="stylesheet" href="/styles/decorative-elements.css" />
   </head>
-  <body
-    class="m-8 min-h-screen text-center flex items-center justify-center h-screen flex-col"
-  >
-    <div id="nav-placeholder"></div>
-    <div class="snowfall-container"></div>
-    <div class="text-center mb-8">
-      <h1 class="text-3xl sm:text-5xl md:text-6xl text-white drop-shadow-lg">
-        🎅 Santa is coming! Get ready!
-      </h1>
-      <p class="text-lg sm:text-xl text-white/80 mt-2">
-        The countdown to Christmas magic begins…
-      </p>
-    </div>
-
-    <!-- Count down timer  -->
-    <section class="timer mb-12 flex justify-center">
-      <div id="countdown-timer" class="flex gap-4 sm:gap-6 md:gap-8">
-        <!-- Days -->
-        <span
-          id="days"
-          class="bg-white/10 backdrop-blur-lg rounded-3xl shadow-2xl p-6 sm:p-8 md:p-10 text-3xl sm:text-5xl md:text-6xl font-bold border border-white/20 flex items-center justify-center min-w-[60px] sm:min-w-[90px] md:min-w-[120px]"
-        ></span>
-
-        <span
-          class="text-3xl sm:text-5xl md:text-6xl font-bold flex items-center"
-          >:</span
-        >
-
-        <!-- Hours -->
-        <span
-          id="hours"
-          class="bg-white/10 backdrop-blur-lg rounded-3xl shadow-2xl p-6 sm:p-8 md:p-10 text-3xl sm:text-5xl md:text-6xl font-bold border border-white/20 flex items-center justify-center min-w-[60px] sm:min-w-[90px] md:min-w-[120px]"
-        ></span>
-
-        <span
-          class="text-3xl sm:text-5xl md:text-6xl font-bold flex items-center"
-          >:</span
-        >
-
-        <!-- Minutes -->
-        <span
-          id="minutes"
-          class="bg-white/10 backdrop-blur-lg rounded-3xl shadow-2xl p-6 sm:p-8 md:p-10 text-3xl sm:text-5xl md:text-6xl font-bold border border-white/20 flex items-center justify-center min-w-[60px] sm:min-w-[90px] md:min-w-[120px]"
-        ></span>
-
-        <span
-          class="text-3xl sm:text-5xl md:text-6xl font-bold flex items-center"
-          >:</span
-        >
-
-        <!-- Seconds -->
-        <span
-          id="seconds"
-          class="bg-white/10 backdrop-blur-lg rounded-3xl shadow-2xl p-6 sm:p-8 md:p-10 text-3xl sm:text-5xl md:text-6xl font-bold border border-white/20 flex items-center justify-center min-w-[60px] sm:min-w-[90px] md:min-w-[120px]"
-        ></span>
-      </div>
-    </section>
-
-    <!-- Ai generated message  -->
-    <section
-      class="messages bg-white/10 backdrop-blur-lg rounded-2xl shadow-2xl p-8 border border-white/20 m-8"
+  <body class="min-h-screen flex flex-col">
+    <div
+      class="m-8 text-center flex items-center justify-center flex-col"
+      style="position: relative; top: 67px"
     >
-      <div id="christmas-message">Loading</div>
-    </section>
+      <div id="nav-placeholder"></div>
+      <div class="snowfall-container"></div>
+      <div class="text-center mb-8">
+        <h1 class="text-3xl sm:text-5xl md:text-6xl text-white drop-shadow-lg">
+          🎅 Santa is coming! Get ready!
+        </h1>
+        <p class="text-lg sm:text-xl text-white/80 mt-2">
+          The countdown to Christmas magic begins…
+        </p>
+      </div>
 
+      <!-- Count down timer  -->
+      <section class="timer mb-12 flex justify-center">
+        <div id="countdown-timer" class="flex gap-4 sm:gap-6 md:gap-8">
+          <!-- Days -->
+          <span
+            id="days"
+            class="bg-white/10 backdrop-blur-lg rounded-3xl shadow-2xl p-6 sm:p-8 md:p-10 text-3xl sm:text-5xl md:text-6xl font-bold border border-white/20 flex items-center justify-center min-w-[60px] sm:min-w-[90px] md:min-w-[120px]"
+          ></span>
+
+          <span
+            class="text-3xl sm:text-5xl md:text-6xl font-bold flex items-center"
+            >:</span
+          >
+
+          <!-- Hours -->
+          <span
+            id="hours"
+            class="bg-white/10 backdrop-blur-lg rounded-3xl shadow-2xl p-6 sm:p-8 md:p-10 text-3xl sm:text-5xl md:text-6xl font-bold border border-white/20 flex items-center justify-center min-w-[60px] sm:min-w-[90px] md:min-w-[120px]"
+          ></span>
+
+          <span
+            class="text-3xl sm:text-5xl md:text-6xl font-bold flex items-center"
+            >:</span
+          >
+
+          <!-- Minutes -->
+          <span
+            id="minutes"
+            class="bg-white/10 backdrop-blur-lg rounded-3xl shadow-2xl p-6 sm:p-8 md:p-10 text-3xl sm:text-5xl md:text-6xl font-bold border border-white/20 flex items-center justify-center min-w-[60px] sm:min-w-[90px] md:min-w-[120px]"
+          ></span>
+
+          <span
+            class="text-3xl sm:text-5xl md:text-6xl font-bold flex items-center"
+            >:</span
+          >
+
+          <!-- Seconds -->
+          <span
+            id="seconds"
+            class="bg-white/10 backdrop-blur-lg rounded-3xl shadow-2xl p-6 sm:p-8 md:p-10 text-3xl sm:text-5xl md:text-6xl font-bold border border-white/20 flex items-center justify-center min-w-[60px] sm:min-w-[90px] md:min-w-[120px]"
+          ></span>
+        </div>
+      </section>
+
+      <!-- Ai generated message  -->
+      <section
+        class="messages bg-white/10 backdrop-blur-lg rounded-2xl shadow-2xl p-8 border border-white/20 m-8"
+      >
+        <div id="christmas-message">Loading</div>
+      </section>
+    </div>
+    <div id="footer-placeholder" class="mt-auto"></div>
     <script>
       // sets variable to store christmas day
       var christmasDay = new Date("Dec 25, 2025 00:00:00").getTime();
