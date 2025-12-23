@@ -10,20 +10,22 @@
 
 const CHATBOT_QUESTIONS = [
   {
-    id: 'recipient',
-    prompt: "Who are we shopping for? (e.g., dad, college roommate, best friend)",
-    placeholder: 'e.g. sister who loves travel'
+    id: "recipient",
+    prompt:
+      "Who are we shopping for? (e.g., dad, college roommate, best friend)",
+    placeholder: "e.g. sister who loves travel",
   },
   {
-    id: 'interests',
-    prompt: "What do they get excited about lately? Hobbies, fandoms, new obsessions?",
-    placeholder: 'e.g. hiking, coffee, photography'
+    id: "interests",
+    prompt:
+      "What do they get excited about lately? Hobbies, fandoms, new obsessions?",
+    placeholder: "e.g. hiking, coffee, photography",
   },
   {
-    id: 'budget',
+    id: "budget",
     prompt: "Any rough budget or type of gift you'd like to aim for?",
-    placeholder: 'e.g. under $75 and handmade vibes'
-  }
+    placeholder: "e.g. under $75 and handmade vibes",
+  },
 ];
 
 let puterScriptPromise = null;
@@ -33,25 +35,29 @@ let puterScriptPromise = null;
  * @returns {Promise<boolean>}
  */
 function ensurePuterReady() {
-  if (window.puter && window.puter.ai && typeof window.puter.ai.chat === 'function') {
+  if (
+    window.puter &&
+    window.puter.ai &&
+    typeof window.puter.ai.chat === "function"
+  ) {
     return Promise.resolve(true);
   }
 
   if (!puterScriptPromise) {
-    puterScriptPromise = new Promise(resolve => {
-      const existing = document.querySelector('script[data-puter-sdk]');
+    puterScriptPromise = new Promise((resolve) => {
+      const existing = document.querySelector("script[data-puter-sdk]");
 
       if (existing) {
-        existing.addEventListener('load', () => resolve(true));
-        existing.addEventListener('error', () => resolve(false));
+        existing.addEventListener("load", () => resolve(true));
+        existing.addEventListener("error", () => resolve(false));
         return;
       }
 
-      const script = document.createElement('script');
-      script.src = 'https://js.puter.com/v2/';
+      const script = document.createElement("script");
+      script.src = "https://js.puter.com/v2/";
       script.async = true;
       script.defer = true;
-      script.dataset.puterSdk = 'true';
+      script.dataset.puterSdk = "true";
       script.onload = () => resolve(true);
       script.onerror = () => resolve(false);
       document.head.appendChild(script);
@@ -65,18 +71,18 @@ function ensurePuterReady() {
  * Initialize chatbot widget interactions
  */
 function initChatbotWidget() {
-  const widgetButton = document.querySelector('.chatbot-toggle');
-  const modal = document.querySelector('.chatbot-modal');
+  const widgetButton = document.querySelector(".chatbot-toggle");
+  const modal = document.querySelector(".chatbot-modal");
 
   if (!widgetButton || !modal) {
     return;
   }
 
-  const closeButton = modal.querySelector('.chatbot-close');
-  const form = modal.querySelector('.chatbot-form');
-  const input = modal.querySelector('.chatbot-input');
-  const messages = modal.querySelector('.chatbot-messages');
-  const statusBanner = modal.querySelector('.chatbot-status');
+  const closeButton = modal.querySelector(".chatbot-close");
+  const form = modal.querySelector(".chatbot-form");
+  const input = modal.querySelector(".chatbot-input");
+  const messages = modal.querySelector(".chatbot-messages");
+  const statusBanner = modal.querySelector(".chatbot-status");
 
   // state dependent on the conversation
   const state = {
@@ -84,7 +90,7 @@ function initChatbotWidget() {
     answers: {},
     isWaitingOnAI: false,
     loadingMessage: null,
-    sdkWarmPromise: null
+    sdkWarmPromise: null,
   };
   // Function to update the status banner
   function updateStatus(message) {
@@ -93,7 +99,7 @@ function initChatbotWidget() {
       statusBanner.textContent = message;
       statusBanner.hidden = false;
     } else {
-      statusBanner.textContent = '';
+      statusBanner.textContent = "";
       statusBanner.hidden = true;
     }
   }
@@ -106,55 +112,69 @@ function initChatbotWidget() {
     }
     return state.sdkWarmPromise;
   }
+  /* opens the chatbot modal from anywhere, the link in the feature card in this case */
+  window.openChatbot = function () {
+    toggleModal(true);
+  };
   // this function toggles the modal open and closed
   function toggleModal(open) {
     const isOpen = Boolean(open);
-    modal.classList.toggle('active', isOpen);
-    modal.setAttribute('aria-hidden', String(!isOpen));
+    modal.classList.toggle("active", isOpen);
+    modal.setAttribute("aria-hidden", String(!isOpen));
 
     if (isOpen) {
       updateStatus("Summoning Pixel from Santa's workshop...");
-      warmUpSDK().then(isReady => {
-        if (isReady && modal.classList.contains('active') && !state.isWaitingOnAI) {
-          updateStatus('');
+      warmUpSDK().then((isReady) => {
+        if (
+          isReady &&
+          modal.classList.contains("active") &&
+          !state.isWaitingOnAI
+        ) {
+          updateStatus("");
         }
       });
       startConversation();
     } else {
       resetConversation();
-      updateStatus('');
+      updateStatus("");
     }
   }
 
   function startConversation() {
-    messages.innerHTML = '';
+    messages.innerHTML = "";
     state.questionIndex = 0;
     state.answers = {};
     state.isWaitingOnAI = false;
     state.loadingMessage = null;
-    updateStatus('');
+    updateStatus("");
 
-    addMessage("Hi! I'm Pixel the North Pole elf. Tell me who you're shopping for and I'll whip up ideas.",
-      'assistant');
+    addMessage(
+      "Hi! I'm Pixel the North Pole elf. Tell me who you're shopping for and I'll whip up ideas.",
+      "assistant"
+    );
     askNextQuestion();
     input.focus();
   }
 
   function resetConversation() {
-    input.value = '';
+    input.value = "";
     input.placeholder = CHATBOT_QUESTIONS[0].placeholder;
     input.disabled = false;
   }
 
-  function addMessage(content, sender = 'assistant', { loading = false, allowFormatting = false } = {}) {
-    const message = document.createElement('div');
+  function addMessage(
+    content,
+    sender = "assistant",
+    { loading = false, allowFormatting = false } = {}
+  ) {
+    const message = document.createElement("div");
     message.className = `chatbot-message ${sender}`;
     if (loading) {
-      message.classList.add('loading');
+      message.classList.add("loading");
     }
 
     if (allowFormatting) {
-      message.innerHTML = content.replace(/\n/g, '<br>');
+      message.innerHTML = content.replace(/\n/g, "<br>");
     } else {
       message.textContent = content;
     }
@@ -171,7 +191,7 @@ function initChatbotWidget() {
     }
 
     const question = CHATBOT_QUESTIONS[state.questionIndex];
-    addMessage(question.prompt, 'assistant');
+    addMessage(question.prompt, "assistant");
     input.placeholder = question.placeholder;
   }
 
@@ -182,12 +202,12 @@ function initChatbotWidget() {
     }
 
     const currentQuestion = CHATBOT_QUESTIONS[state.questionIndex];
-    addMessage(trimmed, 'user');
+    addMessage(trimmed, "user");
     if (currentQuestion) {
       state.answers[currentQuestion.id] = trimmed;
     }
 
-    input.value = '';
+    input.value = "";
     state.questionIndex += 1;
     askNextQuestion();
   }
@@ -195,13 +215,24 @@ function initChatbotWidget() {
   async function fetchGiftIdeas() {
     state.isWaitingOnAI = true;
     input.disabled = true;
-    state.loadingMessage = addMessage("Let me check with Santa's workshop...", 'assistant', { loading: true });
-    updateStatus('Checking in with the elves...');
+    state.loadingMessage = addMessage(
+      "Let me check with Santa's workshop...",
+      "assistant",
+      { loading: true }
+    );
+    updateStatus("Checking in with the elves...");
 
     const isReady = await warmUpSDK();
-    if (!isReady || !window.puter || !puter.ai || typeof puter.ai.chat !== 'function') {
-      updateStatus('Workshop is a bit busy. Try again shortly.');
-      finishWithMessage("Hmm, I can't reach the workshop elves right now. Please try again in a moment.");
+    if (
+      !isReady ||
+      !window.puter ||
+      !puter.ai ||
+      typeof puter.ai.chat !== "function"
+    ) {
+      updateStatus("Workshop is a bit busy. Try again shortly.");
+      finishWithMessage(
+        "Hmm, I can't reach the workshop elves right now. Please try again in a moment."
+      );
       return;
     }
 
@@ -212,29 +243,33 @@ function initChatbotWidget() {
       "Given the following shopper details, ask 1-2 follow-up questions if needed, then propose 3-4 thoughtful Christmas gift ideas.",
       "Each idea should be concise (1 sentence) and reference the details provided.",
       "Details:",
-      `Recipient: ${state.answers.recipient || 'Unknown'}`,
-      `Interests: ${state.answers.interests || 'Not shared'}`,
-      `Budget or preferences: ${state.answers.budget || 'Flexible'}`,
-      "Format response as a short friendly greeting followed by a numbered list."
-    ].join('\n');
+      `Recipient: ${state.answers.recipient || "Unknown"}`,
+      `Interests: ${state.answers.interests || "Not shared"}`,
+      `Budget or preferences: ${state.answers.budget || "Flexible"}`,
+      "Format response as a short friendly greeting followed by a numbered list.",
+    ].join("\n");
 
     try {
       const response = await window.puter.ai.chat(prompt, {
-        model: 'gpt-5-nano'
+        model: "gpt-5-nano",
       });
 
       const content = response?.message?.content;
       if (content) {
         finishWithMessage(content, true);
       } else {
-        finishWithMessage("Looks like the snowstorm scrambled the reply. Let's try again soon.");
+        finishWithMessage(
+          "Looks like the snowstorm scrambled the reply. Let's try again soon."
+        );
       }
     } catch (error) {
-      console.error('Chatbot error:', error);
-      updateStatus('Signal dropped in the snowstorm. Try again?');
-      finishWithMessage("I couldn't get through to HQ. Mind giving it another shot?");
+      console.error("Chatbot error:", error);
+      updateStatus("Signal dropped in the snowstorm. Try again?");
+      finishWithMessage(
+        "I couldn't get through to HQ. Mind giving it another shot?"
+      );
     } finally {
-      updateStatus('');
+      updateStatus("");
     }
   }
 
@@ -244,7 +279,7 @@ function initChatbotWidget() {
       state.loadingMessage = null;
     }
 
-    addMessage(text, 'assistant', { allowFormatting });
+    addMessage(text, "assistant", { allowFormatting });
     state.isWaitingOnAI = false;
     input.disabled = false;
     input.placeholder = 'Need more ideas? Ask away or type "restart".';
@@ -253,7 +288,7 @@ function initChatbotWidget() {
   function handleFormSubmit(event) {
     event.preventDefault();
 
-    if (input.value.trim().toLowerCase() === 'restart') {
+    if (input.value.trim().toLowerCase() === "restart") {
       startConversation();
       return;
     }
@@ -261,18 +296,18 @@ function initChatbotWidget() {
     handleUserResponse(input.value);
   }
 
-  widgetButton.addEventListener('click', () => toggleModal(true));
-  closeButton?.addEventListener('click', () => toggleModal(false));
-  modal.addEventListener('click', event => {
+  widgetButton.addEventListener("click", () => toggleModal(true));
+  closeButton?.addEventListener("click", () => toggleModal(false));
+  modal.addEventListener("click", (event) => {
     if (event.target === modal) {
       toggleModal(false);
     }
   });
-  form.addEventListener('submit', handleFormSubmit);
+  form.addEventListener("submit", handleFormSubmit);
 
   // Keyboard shortcut for ESC close
-  document.addEventListener('keydown', event => {
-    if (event.key === 'Escape' && modal.classList.contains('active')) {
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && modal.classList.contains("active")) {
       toggleModal(false);
     }
   });
