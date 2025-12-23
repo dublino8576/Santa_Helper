@@ -276,4 +276,9 @@ function initChatbotWidget() {
       toggleModal(false);
     }
   });
+
+  // Expose toggleModal globally for external access
+  window.openChatbot = function() {
+    toggleModal(true);
+  };
 }
