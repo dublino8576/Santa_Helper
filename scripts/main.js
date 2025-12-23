@@ -18,7 +18,8 @@
  */
 async function loadComponent(componentName, targetSelector) {
   try {
-    const response = await fetch(`/components/${componentName}.html`);
+    const basePath = window.location.pathname.includes('/pages/') ? '../' : './';
+    const response = await fetch(`${basePath}components/${componentName}.html`);
     if (!response.ok) throw new Error(`Failed to load ${componentName}`);
 
     const html = await response.text();
