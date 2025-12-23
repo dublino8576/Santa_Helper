@@ -18,7 +18,7 @@
   left: 0;
   width: 100%;
   height: 100vh;
-  z-index: 0; /* Behind content but above body background */
+  z-index: 0; /* Above body background, below content */
   overflow: hidden;
 }
 
@@ -52,7 +52,7 @@
     rgba(26, 40, 69, 0.2) 50%,
     rgba(26, 40, 69, 0.4) 100%
   );
-  z-index: 0; /* Behind content but above body background */
+  z-index: 0; /* Above body background, below content */
   pointer-events: none;
 }
 
@@ -63,46 +63,45 @@
   width: 100%;
   padding: 2rem;
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   align-items: center;
   margin-top: 60px; /* Account for fixed navbar */
 }
 
 .hero-content {
   max-width: 550px;
-  margin-right: 10%;
-  text-align: left;
+  text-align: center;
   background: rgba(20, 35, 65, 0.4);
   backdrop-filter: blur(10px);
-  padding: 3rem;
-  border-radius: 1.5rem;
+  padding: var(--space-xl);
+  border-radius: var(--radius-xl);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  box-shadow: var(--shadow-lg);
 }
 
 .hero-subtitle {
-  font-size: 1rem;
+  font-size: var(--font-size-base);
   text-transform: uppercase;
   letter-spacing: 0.2em;
   color: var(--color-gold);
-  margin: 0 0 1rem 0;
-  font-weight: 600;
+  margin: 0 0 var(--space-sm) 0;
+  font-weight: var(--font-weight-semibold);
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
 }
 
 .hero-title {
   font-family: var(--font-heading);
-  font-size: 3.5rem;
-  font-weight: 700;
+  font-size: var(--font-size-4xl);
+  font-weight: var(--font-weight-bold);
   color: var(--color-snow);
   line-height: 1.1;
-  margin: 0 0 1.5rem 0;
+  margin: 0 0 var(--space-md) 0;
   text-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
   letter-spacing: 0.05em;
 }
 
 .hero-description {
-  font-size: 1.15rem;
+  font-size: var(--font-size-md);
   line-height: 1.7;
   color: var(--color-text-light);
   margin: 0 0 2.5rem 0;
@@ -112,41 +111,42 @@
 
 .hero-actions {
   display: flex;
-  gap: 1rem;
+  gap: var(--space-sm);
   flex-wrap: wrap;
 }
 
 .hero-actions .btn-primary,
 .hero-actions .btn-secondary {
-  font-size: 1.1rem;
+  font-size: var(--font-size-md);
   padding: 0.9rem 2.2rem;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
-  transition: all 0.3s ease;
+  box-shadow: var(--shadow-md);
+  transition: transform var(--transition-base) ease,
+              box-shadow var(--transition-base) ease;
 }
 
 .hero-actions .btn-primary:hover,
 .hero-actions .btn-secondary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.4);
+  box-shadow: var(--shadow-xl);
 }
 
 /* Scroll Indicator */
 .scroll-indicator {
   position: absolute;
-  bottom: 3rem;
+  bottom: var(--space-xl);
   left: 50%;
   transform: translateX(-50%);
   z-index: 2; /* Above fixed background and overlay */
   text-align: center;
   color: var(--color-snow);
-  font-size: 0.9rem;
+  font-size: var(--font-size-sm);
   opacity: 0.8;
   animation: fadeInOut 2s ease-in-out infinite;
 }
 
 .scroll-arrow {
-  font-size: 1.5rem;
-  margin-top: 0.5rem;
+  font-size: var(--font-size-lg);
+  margin-top: var(--space-xs);
   animation: bounce 2s ease-in-out infinite;
 }
 
@@ -175,42 +175,36 @@
 
 @media (max-width: 1200px) {
   .hero-content {
-    margin-right: 5%;
     max-width: 500px;
   }
 
   .hero-title {
-    font-size: 3rem;
+    font-size: var(--font-size-3xl);
   }
 }
 
 @media (max-width: 1024px) {
-  .hero-content-wrapper {
-    justify-content: center;
-  }
-
   .hero-content {
-    margin-right: 0;
     max-width: 600px;
   }
 }
 
 @media (max-width: 768px) {
   .hero-content {
-    padding: 2rem;
+    padding: var(--space-lg);
     background: rgba(20, 35, 65, 0.6);
   }
 
   .hero-title {
-    font-size: 2.5rem;
+    font-size: var(--font-size-2xl);
   }
 
   .hero-subtitle {
-    font-size: 0.9rem;
+    font-size: var(--font-size-sm);
   }
 
   .hero-description {
-    font-size: 1rem;
+    font-size: var(--font-size-base);
   }
 
   .hero-actions {
@@ -226,16 +220,16 @@
 
 @media (max-width: 480px) {
   .hero-content {
-    padding: 1.5rem;
+    padding: var(--space-md);
   }
 
   .hero-title {
-    font-size: 2rem;
+    font-size: var(--font-size-xl);
   }
 
   .hero-actions .btn-primary,
   .hero-actions .btn-secondary {
     padding: 0.8rem 1.5rem;
-    font-size: 1rem;
+    font-size: var(--font-size-base);
   }
 }

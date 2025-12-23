@@ -4,10 +4,10 @@
 
 /* Section Heading with Gold Underline */
 .section-heading {
-  font-size: 2.75rem;
+  font-size: var(--font-size-3xl);
   font-family: var(--font-heading);
   color: var(--color-snow);
-  margin-bottom: 1rem;
+  margin-bottom: var(--space-sm);
   text-align: center;
   letter-spacing: 0.02em;
   position: relative;
@@ -19,17 +19,17 @@
   width: 80px;
   height: 3px;
   background: var(--color-gold);
-  margin: 1.5rem auto 0;
+  margin: var(--space-md) auto 0;
   border-radius: 2px;
 }
 
 /* Section Subheading */
 .section-subheading {
-  font-size: 1.15rem;
+  font-size: var(--font-size-md);
   color: var(--color-text-light);
   opacity: 0.9;
   text-align: center;
   max-width: 700px;
-  margin: 0 auto 3rem;
+  margin: 0 auto var(--space-xl);
   line-height: 1.7;
 }

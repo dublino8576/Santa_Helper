@@ -6,11 +6,12 @@
 .feature-link {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: var(--space-xs);
   color: var(--color-gold);
   text-decoration: none;
-  font-weight: 500;
-  transition: all 0.2s ease;
+  font-weight: var(--font-weight-medium);
+  transition: color var(--transition-fast) ease,
+              transform var(--transition-fast) ease;
 }
 
 .feature-link:hover {
@@ -19,7 +20,7 @@
 }
 
 .feature-link .arrow {
-  transition: transform 0.2s ease;
+  transition: transform var(--transition-fast) ease;
 }
 
 .feature-link:hover .arrow {

@@ -17,7 +17,7 @@
   padding: 0;
   width: 150px;
   height: 150px;
-  transition: transform 0.3s ease, filter 0.3s ease;
+  transition: transform var(--transition-base) ease, filter var(--transition-base) ease;
   position: relative;
 }
 
@@ -61,7 +61,7 @@
   width: 120%;
   height: 120%;
   background: radial-gradient(circle, rgba(255, 215, 102, 0.2) 0%, transparent 70%);
-  border-radius: 50%;
+  border-radius: var(--radius-xl);
   transform: translate(-50%, -50%);
   animation: pulse 2.5s infinite ease-in-out;
   pointer-events: none;
@@ -113,10 +113,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 1.5rem;
+  padding: var(--space-md);
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.25s ease;
+  transition: opacity var(--transition-base) ease;
 }
 
 .chatbot-modal.active {
@@ -128,8 +128,8 @@
   width: min(420px, 100%);
   background: rgba(20, 35, 65, 0.95);
   border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 1.25rem;
-  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.45);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-xl);
   display: flex;
   flex-direction: column;
   max-height: 90vh;
@@ -140,15 +140,15 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1.25rem 1.5rem;
+  padding: 1.25rem var(--space-md);
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   background: rgba(12, 25, 45, 0.75);
 }
 
 .chatbot-label {
   margin: 0;
-  font-size: 1rem;
-  font-weight: 600;
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
   color: var(--color-snow);
 }
 
@@ -199,11 +199,11 @@
 }
 
 .chatbot-message {
-  padding: 0.9rem 1rem;
-  border-radius: 1rem;
+  padding: 0.9rem var(--space-sm);
+  border-radius: var(--radius-md);
   line-height: 1.5;
-  font-size: 0.95rem;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+  font-size: var(--font-size-sm);
+  box-shadow: var(--shadow-md);
 }
 
 .chatbot-message.assistant {
@@ -214,7 +214,8 @@
 
 .chatbot-message.user {
   align-self: flex-end;
-  background: rgba(201, 74, 61, 0.9);
+  background: var(--color-accent);
+  opacity: 0.9;
   border: 1px solid rgba(255, 255, 255, 0.08);
 }
 

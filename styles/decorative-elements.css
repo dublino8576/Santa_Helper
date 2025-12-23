@@ -11,10 +11,11 @@
   position: fixed;
   top: -10px;
   color: rgba(255, 255, 255, 0.6);
-  font-size: 1.5rem;
+  font-size: var(--font-size-md);
   pointer-events: none;
-  z-index: 1;
+  z-index: 100;
   animation: snowfall linear infinite;
+  will-change: transform, opacity;
 }
 
 @keyframes snowfall {
@@ -34,10 +35,10 @@
   }
 }
 
-/* Stagger animations with different durations and positions */
+/* Stagger animations with different durations and positions - tightened for smoothness */
 .snowflake:nth-child(1) {
   left: 10%;
-  animation-duration: 12s;
+  animation-duration: 14s;
 }
 
 .snowflake:nth-child(2) {
@@ -48,7 +49,7 @@
 
 .snowflake:nth-child(3) {
   left: 50%;
-  animation-duration: 18s;
+  animation-duration: 16s;
   animation-delay: 4s;
 }
 
@@ -60,19 +61,19 @@
 
 .snowflake:nth-child(5) {
   left: 90%;
-  animation-duration: 16s;
+  animation-duration: 15s;
   animation-delay: 3s;
 }
 
 .snowflake:nth-child(6) {
   left: 20%;
-  animation-duration: 13s;
+  animation-duration: 14s;
   animation-delay: 5s;
 }
 
 .snowflake:nth-child(7) {
   left: 60%;
-  animation-duration: 17s;
+  animation-duration: 15s;
   animation-delay: 2.5s;
 }
 
@@ -80,6 +81,14 @@
   left: 80%;
   animation-duration: 14.5s;
   animation-delay: 1.5s;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .snowflake {
+    animation-duration: 20s;
+    opacity: 0.3;
+  }
 }
 
 /* ----------------------------------

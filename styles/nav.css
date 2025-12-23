@@ -11,20 +11,29 @@
   left: 0;
   right: 0;
   z-index: 1000;
-  padding: 1rem 0;
-  transition: all 0.3s ease;
+  padding: var(--space-sm) 0;
+  transition: all var(--transition-base) ease;
 }
 
 .main-nav.scrolled {
   background: rgba(20, 35, 65, 0.95);
   padding: 0.7rem 0;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Transparent navbar for specific pages */
+.transparent-nav .main-nav {
+  background: rgba(20, 35, 65, 0.3);
+}
+
+.transparent-nav .main-nav.scrolled {
+  background: rgba(20, 35, 65, 0.7);
 }
 
 .nav-container {
   max-width: 1400px;
   margin: 0 auto;
-  padding: 0 3rem;
+  padding: 0 var(--space-xl);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -33,21 +42,21 @@
 .nav-logo a {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: var(--space-xs);
   text-decoration: none;
   color: var(--color-snow);
   font-family: var(--font-heading);
-  font-size: 1.5rem;
-  font-weight: 600;
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
 }
 
 .logo-icon {
-  font-size: 1.8rem;
+  font-size: var(--font-size-xl);
 }
 
 .nav-links {
   display: flex;
-  gap: 2rem;
+  gap: var(--space-lg);
   list-style: none;
   margin: 0;
   padding: 0;
@@ -56,10 +65,11 @@
 .nav-link {
   color: var(--color-text-light);
   text-decoration: none;
-  font-weight: 500;
-  padding: 0.5rem 1rem;
-  border-radius: 0.5rem;
-  transition: all 0.2s ease;
+  font-weight: var(--font-weight-medium);
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: var(--radius-sm);
+  transition: color var(--transition-fast) ease,
+              background var(--transition-fast) ease;
 }
 
 .nav-link:hover {
@@ -77,7 +87,7 @@
   background: none;
   border: none;
   cursor: pointer;
-  padding: 0.5rem;
+  padding: var(--space-xs);
 }
 
 .hamburger {
@@ -95,7 +105,7 @@
   width: 25px;
   height: 2px;
   background: var(--color-snow);
-  transition: all 0.3s ease;
+  transition: all var(--transition-base) ease;
 }
 
 .hamburger::before {
@@ -138,11 +148,11 @@
     background: rgba(13, 27, 42, 0.98);
     flex-direction: column;
     gap: 0;
-    padding: 1rem 0;
+    padding: var(--space-sm) 0;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.3s ease;
+    transition: max-height var(--transition-base) ease;
   }
 
   .nav-links.active {
@@ -150,7 +160,7 @@
   }
 
   .nav-link {
-    padding: 1rem 2rem;
+    padding: var(--space-sm) var(--space-lg);
     border-radius: 0;
   }
 }

@@ -1,11 +1,11 @@
 .christmas-tree {
   position: relative;
-  z-index: -1;
+  z-index: 0;
   background-image: url("../images/christmas-tree.webp");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  background-color: red;
+  background-color: var(--color-red);
   top: 67px;
   margin-bottom: 67px;
 }
@@ -34,6 +34,6 @@
 
 /* Handle */
 .scrollbar::-webkit-scrollbar-thumb {
-  background: #1090d0;
+  background: var(--color-accent);
   border-radius: 10px;
 }
